@@ -13,12 +13,12 @@ async def upload(container: str = Form(...), file: UploadFile = File(...)):
     return upload_blob(filename, container, data)
 
 
-@blob_routes.get("/file/{container}/{filename}")
+@blob_routes.get("/file/{container}/{filename:path}")
 def get_file(container: str, filename: str):
     return get_blob(filename, container)
 
 
-@blob_routes.get("/download/{container}/{filename}")
+@blob_routes.get("/download/{container}/{filename:path}")
 def download_file(container: str, filename: str):
     return download_blob(filename, container)
 
